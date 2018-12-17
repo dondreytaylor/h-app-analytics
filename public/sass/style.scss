@@ -1,123 +1,332 @@
-
-#wrapper {
-  white-space: nowrap;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+@keyframes rotateForever {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-#blockeditor {
-  width: 50vw;
-  height: 100vh;
-  display: inline-block;
-  float: left;
-  overflow-y: auto;
-  background-color: #EEEEEE;
-  padding: 1rem 2rem 5rem 2rem;
-  box-sizing: border-box;
-  input {
-    background-color: #333333;
-    outline: none;
-    border: navajowhite;
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
-    display: block;
-    color: #FFFFFF;
-    display: block;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+html,body {
+  background-color: #F4F8F9;
+}
 
-  h3 {
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    line-height: 1;
+    margin: 0.5rem 0;
+    font-weight: 500;
     font-size: 1.5rem;
-  }
+    color: #9386F0;
+}
 
-  button {
-    padding: 0.8rem 3rem;
-    margin: 0 0 2rem 0;
-    background-color: #000000;
-    color: #FFFFFF;
-    border-radius: 0.5rem;
-  }
+p {
+  line-height: 1;
+  color: #78909C;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 2rem 0;
+}
 
-  .section {
-    margin-bottom: 3rem;
-  }
-
-
-  .list {
-    background-color: #AAA;
-    border-radius: 0.5rem;
-    border: 0.1rem solid #000;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .entries {
-    .entry {
-      margin-bottom: 3rem;
-      background-color: #DDD;
-      padding: 1rem;
-      border: 0.1rem solid #000;
-      border-radius: 0.5rem;
-      margin: 0.5rem 0;
+table.table {
+  border-radius: 0.5rem;
+  tr {
+    &:hover {
+      cursor: pointer;
     }
   }
+  td, th {
+    font-size: 0.85rem;
+  }
+  th {
+      padding: 0.5rem!important;
+  }
+  a {
+      color: #9386F0;
+  }
+}
 
-  .field {
-    margin-bottom: 1rem;
-    max-width: 25rem;
-    width: 70%;
+#filters {
+  padding: 0.3rem 1rem;
+  background-color: #FEFEFE;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(43,59,71,.124066);
+  max-width: 40rem;
+  margin: 0 0 1rem 0;
+  & > span {
+    font-size: 0.85rem;
+    position: relative;
+    top: 0.2rem;
+  }
+}
+
+#search {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  height: 3rem;
+  box-shadow: 0 2px 4px rgba(43,59,71,.124066);
+  background-color: #FEFEFE;
+  z-index: 2;
+  padding-left: 6rem;
+  i {
+    color: #78909C;
+    margin: 0 0.5rem;
+  }
+  input {
+    width: 60%;
+    height: 2.5rem;
+    border: none;
+    outline: none;
+    margin: 0.2rem 0;
+    background-color: #FEFEFE;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    padding: 0.3rem;
+    box-sizing: border-box;
+    border-radius: 0.3rem;
+    &:focus {
+      background-color: #DFDBFD;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  width: 3.5rem;
+  box-shadow: 0 2px 4px rgba(43,59,71,.124066);
+  background-color: #FEFEFE;
+  transition: all 0.3s ease;
+  z-index: 3;
+  padding-top: 1rem;
+  &:hover {
+    width: 8rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    a {
+      span {
+        opacity: 1;
+        transition: all 0.3s ease;
+      }
+    }
   }
 
   a {
-    display: none;
-    color: #c80000;
-    cursor: pointer;
-    margin-bottom: 0.5rem;
-  }
-
-  .removable {
-    & > a {
+    display: block;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    color: #666666;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+    &:hover {
+        background-color: #F9FAFE;
+        transition: all 0.3s ease;
+        span {
+          color: #9386F0;
+          transition: all 0.3s ease;
+        }
+        i {
+          color: #9386F0;
+          transition: all 0.3s ease;
+        }
+    }
+    span {
+      opacity: 0;
+      transition: all 0.3s ease;
       display: block;
+      white-space: nowrap;
+      font-size: 0.75rem;
+    }
+    i {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.3rem;
     }
   }
 }
 
-#blockpreview {
-  width: 50vw;
-  height: 100vh;
+#view {
+  padding-left: 5rem;
+  padding-top: 5rem;
+  padding-right: 3rem;
+}
+
+#view[data-name="dashboard"] {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+#view[data-name="connect"] {
+    .card-holder {
+      max-width: 16rem;
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+      .status {
+        .indicator {
+          position: relative;
+          left: -0.2rem;
+          width: 0.5rem;
+          height: 0.5rem;
+          border-radius: 0.5rem;
+          background-color: #000000;
+          display: inline-block;
+        }
+        .text {
+          font-size: 0.8rem;
+          position: relative;
+        }
+      }
+    }
+
+    .card {
+      border: 0.2rem solid transparent;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #9386F0;
+        transition: all 0.3s ease;
+        opacity: 0.5;
+      }
+
+      &[data-name="snapchat"] {
+         background-color: #FFFC00;
+      }
+      &[data-name="facebook"] {
+         background-color: #3B5998;
+         i {
+           color: #FFFFFF;
+         }
+      }
+      &[data-name="google"] {
+         background-color: #DD4B39;
+         i {
+           color: #FFFFFF;
+         }
+      }
+      &[data-name="apple"] {
+         background-color: #000000;
+         i {
+           color: #FFFFFF;
+         }
+      }
+
+      i {
+        font-size: 4rem;
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+    }
+}
+
+.cards {
+  margin: 2rem 0 5rem 0;
+}
+
+.card {
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 4px rgba(43,59,71,.124066);
+  max-width: 15rem;
+  text-align: center;
+  width: 100%;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
   display: inline-block;
-  float: left;
-  overflow-y: auto;
   box-sizing: border-box;
-  padding: 1rem 2rem 5rem 2rem;
-
-  h3 {
-    font-size: 1.5rem;
+  &:hover {
+    background-color: #F9FAFE;
+    transition: all 0.3s ease;
   }
 
-  .field {
-    #blockhash {
-      width: 95%;
-      border: none;
-      background-color: #EEEEEE;
-      min-height: 5rem;
-      outline: none;
-      box-sizing: border-box;
-      padding: 1rem;
-      overflow-wrap: break-word;
-      margin-bottom: 2rem;
-    }
-
-    #rawblock {
-      width: 95%;
-      border: none;
-      background-color: #EEEEEE;
-      min-height: 20rem;
-      outline: none;
-      box-sizing: border-box;
-      padding: 1rem;
-      overflow-wrap: break-word;
-    }
-
+  .count {
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+    color: #666666;
   }
+  .title {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+    color: #9386F0;
+  }
+  .subtitle {
+    display: block;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #78909C;
+  }
+}
+
+#loading-indicator {
+  width: 100vw;
+  height: 100vh;
+  top: -100vh;
+  left: 0;
+  position: fixed;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s 0s, top 0s 0.3s;
+  background-color: rgba(255,255,255,0.9);
+  &.show {
+    opacity: 1;
+    top: 0;
+    transition: top 0s 0s, opacity 0.3s 0.1s;
+  }
+  #loading-spinner {
+      border-top: 0.1rem solid #9386F0;
+      border-right: 0.1rem solid #9386F0;
+      border-bottom: 0.1rem solid #9386F0;
+      border-left: 0.4rem solid #9386F0;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 5rem;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      margin-left: -2.5rem;
+      animation-name: rotateForever;
+      animation-iteration-count: infinite;
+      animation-duration: 0.5s;
+  }
+}
+
+#notice-indicator {
+    padding: 0.5rem;
+    width: 20rem;
+    margin-left: -10rem;
+    text-align: center;
+    background-color: #9386F0;
+    position: fixed;
+    z-index: 4;
+    left: 50%;
+    top: -5rem;
+    box-shadow: 0 2px 4px rgba(43,59,71,.124066);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    &.show {
+      top: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    p {
+      color: #FFFFFF;
+      margin: 0;
+    }
 }

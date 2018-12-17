@@ -1,0 +1,33 @@
+<div ng-controller="AppCtrl">
+  <div ng-include="'/views/pages/sidebar.html'"></div>
+  <div ng-include="'/views/pages/search.html'"></div>
+  <div id="view" data-name="impressions" ng-controller="ImpressionsCtrl">
+    <h1>Impressions/Clicks</h1>
+    <p>The last few impressions. Use search and time range to narrow results.</p>
+    <div ng-include="'/views/pages/filters.html'"></div>
+    <div class="table-responsive-vertical">
+      <table id="table" class="table table-hover shadow-z-1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Time</th>
+              <th>Viewed</th>
+              <th>Character</th>
+              <th>IP</th>
+              <th>Version</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="result in results">
+              <td data-title="ID"></td>
+              <td data-title="Time"></td>
+              <td data-title="Viewed"></td>
+              <td data-title="Character"></td>
+              <td data-title="IP"></td>
+              <td data-title="Version"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+</div>
