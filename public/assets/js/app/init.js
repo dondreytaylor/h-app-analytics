@@ -14,7 +14,7 @@ config(['$locationProvider', '$interpolateProvider', '$routeProvider', function(
     // Application routing
     $routeProvider
       .when("/", {
-          templateUrl : "/views/pages/landing.html"
+          templateUrl : "/views/pages/dashboard.html"
       })
       .when("/stats/dashboard", {
           templateUrl : "/views/pages/dashboard.html"
