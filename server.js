@@ -50,6 +50,16 @@ var initialization = async function() {
 			}
 	});
 
+	// OAuth
+	server.route({
+			method: 'GET',
+			path: '/auth',
+			handler: function(request, reply)
+			{
+					return reply.view('base', {});
+			}
+	});
+
 	// Handles public file routing
 	server.route({
 	    method: 'GET',
