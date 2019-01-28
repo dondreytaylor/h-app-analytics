@@ -1,0 +1,9 @@
+<div ng-controller="AppCtrl">
+  <div ng-include="'/views/pages/sidebar.html'"></div>
+  <div ng-include="'/views/pages/search.html'"></div>
+  <div id="view" data-name="campaigns" ng-controller="CampaignsCtrl">
+      <h1>Campaigns</h1>
+      <p>Select the campaign that you would like to view stats of.</p>
+      <div ng-include="'/views/pages/filters.html'"></div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div ng-controller="AppCtrl">
+  <div ng-include="'/views/pages/sidebar.html'"></div>
+  <div ng-include="'/views/pages/search.html'"></div>
+  <div id="view" data-name="dashboard" ng-controller="DashboardCtrl">
+      <h1>Stats Dashboard</h1>
+      <p>Welcome to the collective app stats dashboard.</p>
+      <div ng-include="'/views/pages/filters.html'"></div>
+      <div class="cards">
+        <div class="card">
+            <span class="count">0</span>
+            <span class="title">Number of Clicks</span>
+            <span class="subtitle">(total count)</span>
+        </div>
+        <div class="card">
+            <span class="count">0</span>
+            <span class="title">Number of Installs</span>
+            <span class="subtitle">(total count)</span>
+        </div>
+        <div class="card">
+            <span class="count">0</span>
+            <span class="title">Number of Purchases</span>
+            <span class="subtitle">(total count)</span>
+        </div>
+        <div class="card">
+            <span class="count">0</span>
+            <span class="title">Installation Rate</span>
+            <span class="subtitle">(as percentage)</span>
+        </div>
+        <div class="card">
+            <span class="count">0</span>
+            <span class="title">Conversion Rate</span>
+            <span class="subtitle">(as percentage)</span>
+        </div>
+        <div class="card">
+            <span class="count">0</span>
+            <span class="title">Cost</span>
+            <span class="subtitle">(total campaign)</span>
+        </div>
+      </div>
+  </div>
+</div>

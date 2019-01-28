@@ -1,0 +1,44 @@
+<div ng-controller="AppCtrl">
+  <div ng-include="'/views/pages/sidebar.html'"></div>
+  <div ng-include="'/views/pages/search.html'"></div>
+  <div id="view" data-name="connect" ng-controller="ConnectCtrl">
+      <h1>Connect Platform</h1>
+      <p>Authorize any of the following platforms to retrieve app stats.</p>
+      <div class="card-holder">
+        <div class="card" ng-click="connectDisconnect('snapchat')" data-name="snapchat">
+            <i class="fab fa-snapchat-ghost"></i>
+        </div>
+        <div class="status">
+          <div class="indicator"></div>
+          <span class="text">Not Connected</span>
+        </div>
+      </div>
+      <div class="card-holder">
+        <div class="card" ng-click="connectDisconnect('facebook')" data-name="facebook">
+            <i class="fab fa-facebook-f"></i>
+        </div>
+        <div class="status">
+          <div class="indicator"></div>
+          <span class="text">Not Connected</span>
+        </div>
+      </div>
+      <div class="card-holder">
+        <div class="card" ng-click="connectDisconnect('google')" data-name="google">
+            <i class="fab fa-google"></i>
+        </div>
+        <div class="status">
+          <div class="indicator"></div>
+          <span class="text">Not Connected</span>
+        </div>
+      </div>
+      <div class="card-holder">
+        <div class="card" ng-click="connectDisconnect('apple')" data-name="apple">
+            <i class="fab fa-apple"></i>
+        </div>
+        <div class="status">
+          <div class="indicator"></div>
+          <span class="text">Not Connected</span>
+        </div>
+      </div>
+  </div>
+</div>

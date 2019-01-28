@@ -1,88 +1,263 @@
-#wrapper {
-  white-space: nowrap; }
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+@keyframes rotateForever {
+  from {
+    transform: rotate(0); }
+  to {
+    transform: rotate(360deg); } }
+html, body {
+  background-color: #F4F8F9; }
 
-#blockeditor {
-  width: 50vw;
-  height: 100vh;
-  display: inline-block;
-  float: left;
-  overflow-y: auto;
-  background-color: #EEEEEE;
-  padding: 1rem 2rem 5rem 2rem;
-  box-sizing: border-box; }
-  #blockeditor input {
-    background-color: #333333;
+* {
+  font-family: 'Roboto', sans-serif; }
+
+h1 {
+  line-height: 1;
+  margin: 0.5rem 0;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #9386F0; }
+
+p {
+  line-height: 1;
+  color: #78909C;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 2rem 0; }
+
+table.table {
+  border-radius: 0.5rem; }
+  table.table tr:hover {
+    cursor: pointer; }
+  table.table td, table.table th {
+    font-size: 0.85rem; }
+  table.table th {
+    padding: 0.5rem !important; }
+  table.table a {
+    color: #9386F0; }
+
+#filters {
+  padding: 0.3rem 1rem;
+  background-color: #FEFEFE;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(43, 59, 71, 0.12407);
+  max-width: 40rem;
+  margin: 0 0 1rem 0; }
+  #filters > span {
+    font-size: 0.85rem;
+    position: relative;
+    top: 0.2rem; }
+
+#search {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  height: 3rem;
+  box-shadow: 0 2px 4px rgba(43, 59, 71, 0.12407);
+  background-color: #FEFEFE;
+  z-index: 2;
+  padding-left: 6rem; }
+  #search i {
+    color: #78909C;
+    margin: 0 0.5rem; }
+  #search input {
+    width: 60%;
+    height: 2.5rem;
+    border: none;
     outline: none;
-    border: navajowhite;
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
+    margin: 0.2rem 0;
+    background-color: #FEFEFE;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    padding: 0.3rem;
+    box-sizing: border-box;
+    border-radius: 0.3rem; }
+    #search input:focus {
+      background-color: #DFDBFD;
+      transition: all 0.3s ease; }
+
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  width: 3.5rem;
+  box-shadow: 0 2px 4px rgba(43, 59, 71, 0.12407);
+  background-color: #FEFEFE;
+  transition: all 0.3s ease;
+  z-index: 3;
+  padding-top: 1rem; }
+  #sidebar:hover {
+    width: 8rem;
+    transition: all 0.3s ease;
+    cursor: pointer; }
+    #sidebar:hover a span {
+      opacity: 1;
+      transition: all 0.3s ease; }
+  #sidebar a {
     display: block;
-    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    color: #666666;
     display: block;
     width: 100%;
-    overflow: hidden;
-    white-space: nowrap; }
-  #blockeditor h3 {
-    font-size: 1.5rem; }
-  #blockeditor button {
-    padding: 0.8rem 3rem;
-    margin: 0 0 2rem 0;
-    background-color: #000000;
-    color: #FFFFFF;
-    border-radius: 0.5rem; }
-  #blockeditor .section {
-    margin-bottom: 3rem; }
-  #blockeditor .list {
-    background-color: #AAA;
-    border-radius: 0.5rem;
-    border: 0.1rem solid #000;
-    padding: 1rem;
-    margin-bottom: 1rem; }
-  #blockeditor .entries .entry {
-    margin-bottom: 3rem;
-    background-color: #DDD;
-    padding: 1rem;
-    border: 0.1rem solid #000;
-    border-radius: 0.5rem;
-    margin: 0.5rem 0; }
-  #blockeditor .field {
-    margin-bottom: 1rem;
-    max-width: 25rem;
-    width: 70%; }
-  #blockeditor a {
-    display: none;
-    color: #c80000;
-    cursor: pointer;
-    margin-bottom: 0.5rem; }
-  #blockeditor .removable > a {
-    display: block; }
+    text-align: center;
+    padding: 0.5rem 0; }
+    #sidebar a:hover {
+      background-color: #F9FAFE;
+      transition: all 0.3s ease; }
+      #sidebar a:hover span {
+        color: #9386F0;
+        transition: all 0.3s ease; }
+      #sidebar a:hover i {
+        color: #9386F0;
+        transition: all 0.3s ease; }
+    #sidebar a span {
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: block;
+      white-space: nowrap;
+      font-size: 0.75rem; }
+    #sidebar a i {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.3rem; }
 
-#blockpreview {
-  width: 50vw;
-  height: 100vh;
+#view {
+  padding-left: 5rem;
+  padding-top: 5rem;
+  padding-right: 3rem; }
+
+#view[data-name="dashboard"] {
+  max-width: 64rem;
+  margin: 0 auto; }
+
+#view[data-name="connect"] .card-holder {
+  max-width: 16rem;
+  width: 100%;
   display: inline-block;
-  float: left;
-  overflow-y: auto;
-  box-sizing: border-box;
-  padding: 1rem 2rem 5rem 2rem; }
-  #blockpreview h3 {
-    font-size: 1.5rem; }
-  #blockpreview .field #blockhash {
-    width: 95%;
-    border: none;
-    background-color: #EEEEEE;
-    min-height: 5rem;
-    outline: none;
-    box-sizing: border-box;
-    padding: 1rem;
-    overflow-wrap: break-word;
-    margin-bottom: 2rem; }
-  #blockpreview .field #rawblock {
-    width: 95%;
-    border: none;
-    background-color: #EEEEEE;
-    min-height: 20rem;
-    outline: none;
-    box-sizing: border-box;
-    padding: 1rem;
-    overflow-wrap: break-word; }
+  text-align: center; }
+  #view[data-name="connect"] .card-holder .status .indicator {
+    position: relative;
+    left: -0.2rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #000000;
+    display: inline-block; }
+  #view[data-name="connect"] .card-holder .status .text {
+    font-size: 0.8rem;
+    position: relative; }
+#view[data-name="connect"] .card {
+  border: 0.2rem solid transparent;
+  transition: all 0.3s ease; }
+  #view[data-name="connect"] .card:hover {
+    border-color: #9386F0;
+    transition: all 0.3s ease;
+    opacity: 0.5; }
+  #view[data-name="connect"] .card[data-name="snapchat"] {
+    background-color: #FFFC00; }
+  #view[data-name="connect"] .card[data-name="facebook"] {
+    background-color: #3B5998; }
+    #view[data-name="connect"] .card[data-name="facebook"] i {
+      color: #FFFFFF; }
+  #view[data-name="connect"] .card[data-name="google"] {
+    background-color: #DD4B39; }
+    #view[data-name="connect"] .card[data-name="google"] i {
+      color: #FFFFFF; }
+  #view[data-name="connect"] .card[data-name="apple"] {
+    background-color: #000000; }
+    #view[data-name="connect"] .card[data-name="apple"] i {
+      color: #FFFFFF; }
+  #view[data-name="connect"] .card i {
+    font-size: 4rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem; }
+
+.cards {
+  margin: 2rem 0 5rem 0; }
+
+.card {
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 4px rgba(43, 59, 71, 0.12407);
+  max-width: 15rem;
+  text-align: center;
+  width: 100%;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box; }
+  .card:hover {
+    background-color: #F9FAFE;
+    transition: all 0.3s ease; }
+  .card .count {
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+    color: #666666; }
+  .card .title {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+    color: #9386F0; }
+  .card .subtitle {
+    display: block;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #78909C; }
+
+#loading-indicator {
+  width: 100vw;
+  height: 100vh;
+  top: -100vh;
+  left: 0;
+  position: fixed;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s 0s, top 0s 0.3s;
+  background-color: rgba(255, 255, 255, 0.9); }
+  #loading-indicator.show {
+    opacity: 1;
+    top: 0;
+    transition: top 0s 0s, opacity 0.3s 0.1s; }
+  #loading-indicator #loading-spinner {
+    border-top: 0.1rem solid #9386F0;
+    border-right: 0.1rem solid #9386F0;
+    border-bottom: 0.1rem solid #9386F0;
+    border-left: 0.4rem solid #9386F0;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-left: -2.5rem;
+    animation-name: rotateForever;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s; }
+
+#notice-indicator {
+  padding: 0.5rem;
+  width: 20rem;
+  margin-left: -10rem;
+  text-align: center;
+  background-color: #9386F0;
+  position: fixed;
+  z-index: 4;
+  left: 50%;
+  top: -5rem;
+  box-shadow: 0 2px 4px rgba(43, 59, 71, 0.12407);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease; }
+  #notice-indicator.show {
+    top: 0.5rem;
+    transition: all 0.3s ease; }
+  #notice-indicator p {
+    color: #FFFFFF;
+    margin: 0; }
