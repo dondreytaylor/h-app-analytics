@@ -79,10 +79,25 @@ var initialization = async function() {
 			path: '/auth/snapchat',
 			handler: function(request, reply)
 			{
-          console.log(request.url.path);
-          // snapAuth.code.getToken(req.originalUrl)
-          //     .then(function (user) {
-          //     });
+          snapAuth.code.getToken(request.url.path)
+            .then(function (user) {
+                  console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... }
+
+                  // Refresh the current users access token.
+                  user.refresh().then(function (updatedUser) {
+                      console.log(updatedUser !== user) //=> true
+                      console.log(updatedUser.accessToken)
+                  })
+
+                  // Sign API requests on behalf of the current user.
+                  user.sign({
+                      method: 'get',
+                      url: 'https://analytics.bithereum.network'
+                  })
+
+                  // We should store the token into a database.
+                  console.log("Token:", user.accessToken)
+            });
 			}
 	});
 
