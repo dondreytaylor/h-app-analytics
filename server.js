@@ -12,6 +12,15 @@ var connection = mysql.createConnection({
   password : 'lamborghini1',
   database : 'appanalytics'
 });
+var ClientOAuth2 = require('client-oauth2');
+var snapAuth = new ClientOAuth2({
+    clientId: '51015e0d-653b-495a-8b5e-82b548c0908c',
+    clientSecret: '8fa6f2769e5da008b51b',
+    accessTokenUri: 'https://accounts.snapchat.com/login/oauth2/access_token',
+    authorizationUri: 'https://accounts.snapchat.com/login/oauth2/authorize',
+    redirectUri: 'https://analytics.bithereum.network/auth/snapchat',
+    scopes: []
+});
 
 // Template Engine
 var Handlerbars = require('handlebars');
@@ -54,6 +63,26 @@ var initialization = async function() {
 			handler: function(request, reply)
 			{
 					return reply.view('base', {});
+			}
+	});
+	server.route({
+			method: 'GET',
+			path: '/auth/snapchat/init',
+			handler: function(request, reply)
+			{
+          var uri = snapAuth.code.getUri();
+          return reply.redirect(uri)
+			}
+	});
+	server.route({
+			method: 'GET',
+			path: '/auth/snapchat',
+			handler: function(request, reply)
+			{
+          console.log(request);
+          // snapAuth.code.getToken(req.originalUrl)
+          //     .then(function (user) {
+          //     });
 			}
 	});
 

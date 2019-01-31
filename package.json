@@ -9,6 +9,7 @@
   "author": "Dondrey Taylor",
   "license": "ISC",
   "dependencies": {
+    "client-oauth2": "^4.2.3",
     "handlebars": "^4.0.11",
     "handlebars-layout": "^0.1.4",
     "handlebars-layouts": "^3.1.4",
