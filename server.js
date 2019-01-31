@@ -19,7 +19,7 @@ var snapAuth = new ClientOAuth2({
     accessTokenUri: 'https://accounts.snapchat.com/login/oauth2/access_token',
     authorizationUri: 'https://accounts.snapchat.com/login/oauth2/authorize',
     redirectUri: 'https://analytics.bithereum.network/auth/snapchat',
-    scopes: []
+    scopes: ['snapchat-marketing-api']
 });
 
 // Template Engine
@@ -71,7 +71,6 @@ var initialization = async function() {
 			handler: function(request, reply)
 			{
           var uri = snapAuth.code.getUri();
-          console.log(uri);
           return reply.redirect(uri)
 			}
 	});
@@ -80,9 +79,6 @@ var initialization = async function() {
 			path: '/auth/snapchat',
 			handler: function(request, reply)
 			{
-
-          console.log(request);
-
           snapAuth.code.getToken(request.url.path)
             .then(function (user) {
                   console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... }
