@@ -80,6 +80,8 @@ var initialization = async function() {
 			handler: function(request, reply)
 			{
 
+          console.log(request); 
+
           snapAuth.code.getToken(request.url.path)
             .then(function (user) {
                   console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... }
