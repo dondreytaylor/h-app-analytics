@@ -71,6 +71,7 @@ var initialization = async function() {
 			handler: function(request, reply)
 			{
           var uri = snapAuth.code.getUri();
+          console.log(uri);
           return reply.redirect(uri)
 			}
 	});
@@ -80,7 +81,7 @@ var initialization = async function() {
 			handler: function(request, reply)
 			{
 
-          console.log(request); 
+          console.log(request);
 
           snapAuth.code.getToken(request.url.path)
             .then(function (user) {
