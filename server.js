@@ -57,6 +57,17 @@ var initialization = async function() {
 			}
 	});
 
+  // Handles public file routing
+	server.route({
+	    method: 'GET',
+	    path: '/{param*}',
+	    handler: {
+	        directory: {
+	            path: 'public',
+	            listing: true
+	        }
+	    }
+	});
 
 	// Attempt to start the HTTP Server
 	try {
