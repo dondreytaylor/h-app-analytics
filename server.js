@@ -79,7 +79,7 @@ var initialization = async function() {
 			path: '/auth/snapchat',
 			handler: function(request, reply)
 			{
-          console.log(request.url.path;);
+          console.log(request.url.path);
           // snapAuth.code.getToken(req.originalUrl)
           //     .then(function (user) {
           //     });
