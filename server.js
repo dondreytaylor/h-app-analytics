@@ -79,9 +79,7 @@ var initialization = async function() {
 			path: '/auth/snapchat',
 			handler: function(request, reply)
 			{
-          console.log(request.query);
-          console.log(request.payload);
-          
+
           snapAuth.code.getToken(request.url.path)
             .then(function (user) {
                   console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... }
