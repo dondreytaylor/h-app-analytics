@@ -5,6 +5,13 @@ var Path    = require('path');
 var Hapi    = require('hapi');
 var Vision 	= require('vision');
 var Inert 	= require('inert');
+var mysql   = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'lamborghini1',
+  database : 'appanalytics'
+});
 
 // Template Engine
 var Handlerbars = require('handlebars');
@@ -50,17 +57,6 @@ var initialization = async function() {
 			}
 	});
 
-	// Handles public file routing
-	server.route({
-	    method: 'GET',
-	    path: '/{param*}',
-	    handler: {
-	        directory: {
-	            path: 'public',
-	            listing: true
-	        }
-	    }
-	});
 
 	// Attempt to start the HTTP Server
 	try {
