@@ -2,8 +2,8 @@ var redbird = new require('redbird')({
   	port: 80,
   	ssl: {
   		port: 443,
-  		key: "ssl/server.key",
-  		cert: "./ssl/server.crt",
+  		key: "ssl/s.haystack.ai.key",
+  		cert: "./ssl/s.haystack.ai.cer",
   	}
 });
 
